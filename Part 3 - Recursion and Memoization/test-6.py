@@ -7,9 +7,15 @@ n — неотрицательное целое число
 """
 
 
-def get_fast_pow():
-    pass
+def get_fast_pow(a, n):
+    if n == 0:
+        return 1
+    elif n % 2:
+        return a * get_fast_pow(a, n - 1)
+    else:
+        return get_fast_pow(a * a, n // 2)
 
 
 print(get_fast_pow(2, 10))  # 1024
 print(get_fast_pow(5, 2))  # 25
+print(get_fast_pow(2, 100))  # 1267650600228229401496703205376

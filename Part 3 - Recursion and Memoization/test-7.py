@@ -9,8 +9,10 @@ b — неотрицательное целое число
 """
 
 
-def recursive_sum():
-    pass
+def recursive_sum(a, b):
+    if b == 0:
+        return a
+    return a + recursive_sum(a, b-1)
 
 
 print(recursive_sum(10, 22))  # 32

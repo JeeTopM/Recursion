@@ -7,9 +7,12 @@ n — неотрицательное целое число
 """
 
 
-def get_pow():
-    pass
+def get_pow(a, n):
+    if n == 0:
+        return 1
+    return a * get_pow(a, n - 1)
 
 
 print(get_pow(5, 2))  # 25
 print(get_pow(99, 0))  # 1
+print(get_pow(2, 10))  # 1024

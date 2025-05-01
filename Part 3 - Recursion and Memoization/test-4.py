@@ -8,9 +8,12 @@ end — целое неотрицательное число
 """
 
 
-def range_sum():
-    pass
+def range_sum(numbers, start, end):
+    if start == end:
+        return numbers[end]
+    return numbers[end] + range_sum(numbers, start, end - 1)
 
 
 print(range_sum([1, 2, 3, 4, 5, 6, 7, 8, 9], 3, 7))  # 30
 print(range_sum([1, 2, 3, 4, 5, 6, 7, 8, 9], 0, 8))  # 45
+print(range_sum([1, 2, 3, 4, 5, 6, 7, 8, 9], 0, 0))  # 1
