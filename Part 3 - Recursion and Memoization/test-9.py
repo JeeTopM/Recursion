@@ -7,9 +7,15 @@ n — натуральное число
 Функция должна возвращать n-й член последовательности Трибоначчи.
 """
 
+cache = {1: 1, 2: 1, 3: 1}
 
-def tribonacci():
-    pass
+
+def tribonacci(n):
+    result = cache.get(n)
+    if result is None:
+        result = tribonacci(n - 1) + tribonacci(n - 2) + tribonacci(n - 3)
+        cache[n] = result
+    return result
 
 
 print(tribonacci(1))  # 1
