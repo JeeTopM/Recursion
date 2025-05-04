@@ -4,6 +4,16 @@
 пока оно не перестанет быть положительным, а затем прибавляет к нему число 5, пока оно снова не станет равным n.
 """
 
+
+def func(n):
+    if n > 0:
+        print(n)
+        func(n - 5)
+    print(n)
+
+
+target = int(input())
+func(target)
 """
 Sample Input 1:
 16
