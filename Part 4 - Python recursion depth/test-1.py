@@ -10,8 +10,13 @@ nested_lists — список, элементами которого являю�
 """
 
 
-def recursive_sum(data):
-    pass
+def recursive_sum(data, res=0):
+    if type(data) == int:
+        res += data
+    if type(data) == list:
+        for i in data:
+            res += recursive_sum(i)
+    return res
 
 
 # test 1

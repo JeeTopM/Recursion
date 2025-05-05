@@ -9,8 +9,15 @@ key — хешируемый объект
 """
 
 
-def get_all_values():
-    pass
+def get_all_values(data, key):
+    d = []
+    if isinstance(data, dict):
+        if key in data:
+            d.append(data[key])
+        for i in data.values():
+            d.extend(get_all_values(i, key))
+    return set(d)
+
 
 # test 1
 my_dict = {
@@ -40,3 +47,15 @@ my_dict = {
 result = get_all_values(my_dict, "top_grade")
 print(len(sorted(result)))
 # answer - 0
+
+# test 6
+my_dict = {
+    "users": {
+        "Arthur": {"grades": [4, 4, 3], "top_grade": 4},
+        "Timur": {"grades": [5, 5, 5], "top_grade": 5},
+    }
+}
+result = get_all_values(my_dict, "top_grade")
+
+print(*sorted(result))
+print(type(result))

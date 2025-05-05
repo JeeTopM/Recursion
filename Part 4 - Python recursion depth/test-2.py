@@ -15,7 +15,13 @@ nested_lists — список, элементами которого являю�
 
 
 def linear(data):
-    pass
+    nested_lists = []
+    for elem in data:
+        if isinstance(elem, list):
+            nested_lists.extend(linear(elem))
+        else:
+            nested_lists.append(elem)
+    return nested_lists
 
 
 # test 1

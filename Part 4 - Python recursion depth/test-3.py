@@ -9,8 +9,15 @@ key — хешируемый объект
 """
 
 
-def get_value(data):
-    pass
+def get_value(data, key):
+    if key in data:
+        return data[key]
+
+    for item in data.values():
+        if isinstance(item, dict):
+            value = get_value(item, key)
+            if value is not None:
+                return value
 
 
 # test 1

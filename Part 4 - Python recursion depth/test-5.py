@@ -14,13 +14,18 @@ grades.math: 4
 """
 
 
-def dict_travel():
-    pass
+def dict_travel(nested_dicts, d=""):
+    for k, v in sorted(nested_dicts.items()):
+        if isinstance(v, dict):
+            dict_travel(v, d + f"{k}.")
+        else:
+            print(f"{d}{k}: {v}")
 
 
 # test 1
 data = {"a": 1, "b": {"c": 30, "a": 10, "b": 20}}
 dict_travel(data)
+print()
 # answer:
 """
 a: 1
@@ -32,6 +37,7 @@ b.c: 30
 # test
 data = {"d": 1, "b": {"c": 30, "a": 10, "b": 20}, "a": 100}
 dict_travel(data)
+print()
 # answer:
 """
 a: 100
@@ -45,9 +51,16 @@ d: 1
 data = {"b": {"c": 30, "a": 10, "b": {"d": 40, "e": 50}}}
 dict_travel(data)
 # answer:
+print()
 """
 b.a: 10
 b.b.d: 40
 b.b.e: 50
 b.c: 30
 """
+data = {
+    "firstname": "Alyson",
+    "lastname": "Hannigan",
+    "birthday": {"day": 24, "month": "March", "year": 1974},
+}
+dict_travel(data)
